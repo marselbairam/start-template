@@ -1,0 +1,5 @@
+mixin breadcrumbs(data)
+  ul.breadcrumbs
+    each item in data
+      li.breadcrumbs__item
+        a(href=item.href).breadcrumbs__link=item.text

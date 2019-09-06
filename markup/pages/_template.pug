@@ -1,0 +1,30 @@
+doctype html
+html(class='no-js', lang='ru')
+
+  include ../components/header/header.pug
+  include ../components/head/head.pug
+  include ../components/footer/footer.pug
+
+  head
+    +head(head.defaults)
+  body
+    | %=symbols=%
+
+    +header()
+
+    main
+      block content
+
+    +footer()
+
+    script(src='%=static=%js/separate-js/svg4everybody.min.js')
+    script svg4everybody();
+
+    //- Main scripts. You can replace it, but I recommend you to leave it here
+    script(src='%=static=%js/main%=hash=%%=min=%.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js')
+    script(src='https://cdn.jsdelivr.net/npm/scroll-lock@2.1.2/dist/scroll-lock.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.2/flatpickr.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.2/l10n/ru.js')
+    script(src='%=static=%js/separate-js/client.js')
