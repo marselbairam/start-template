@@ -36,17 +36,22 @@ function initWOW() {
 }
 
 function initMFP() {
-  $('.single-image').magnificPopup({
-    type: 'image',
-    mainClass: 'mfp-with-zoom',
-    zoom: {
-      enabled: true,
-      duration: 300,
-      easing: 'ease-in-out',
-      opener: function(openerElement) {
-        return openerElement.is('img') ? openerElement : openerElement.find('img');
+  $('.popup-open').magnificPopup({
+    type: 'inline',
+    removalDelay: 1000,
+    mainClass: 'animated fadeIn',
+    callbacks: {
+      beforeClose: function() {
+        $('.mfp-bg, .mfp-wrap').addClass('fadeOut');
+      },
+      open: function() {
+        scrollLock.disablePageScroll();
+      },
+      close: function() {
+        scrollLock.enablePageScroll();
       }
-    }
+    },
+    midClick: true,
   });
 }
 
