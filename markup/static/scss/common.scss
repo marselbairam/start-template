@@ -74,6 +74,15 @@ input {
   }
 }
 
+input[type='text'],
+textarea {
+  appearance: none;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
 input[type='date'] {
   &::-webkit-inner-spin-button,
   &::-webkit-calendar-picker-indicator {
