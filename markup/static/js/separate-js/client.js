@@ -1,9 +1,5 @@
 // Common scripts
 
-$(function() {
-  document.addEventListener('touchmove', function(e){ e.preventDefault(); }, false); // Disable overscroll on iPhone
-});
-
 function isTouchDevice() {
   let isTouchDevice = false;
 
