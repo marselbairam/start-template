@@ -20,13 +20,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-a,
-input,
-select,
-button {
-  outline: none;
-}
-
 /**
  * Typography
  */
@@ -39,7 +32,6 @@ input,
 textarea,
 button {
   appearance: none;
-  outline: 0;
   box-shadow: none;
 }
 
