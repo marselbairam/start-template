@@ -1,4 +1,4 @@
-// Mixins.
+@import 'vars.scss';
 
 @mixin nl {
     margin: 0;
@@ -8,29 +8,74 @@
     list-style-position: outside;
 }
 
-@mixin cf {
-    &:before,
-    &:after {
-        display: table;
-        content: "";
-    }
-
-    &:after {
-        clear: both;
-    }
-
-    .lt-ie8 & {
-        zoom: 1;
-    }
-}
-
-@mixin blocks-justify {
-    text-align: justify;
-    text-justify: newspaper;
-}
-
-// You can add your own mixins here:
-
 @mixin commonTransition {
     transition: all .5s ease;
+}
+
+/**
+* Media Queries for max-width
+*/
+
+@mixin large_max {
+    @media only screen and (max-width: #{$large-devices}) {
+        @content;
+    }
+}
+
+@mixin medium_max {
+    @media only screen and (max-width: #{$medium-devices}) {
+        @content;
+    }
+}
+
+@mixin small_max {
+    @media only screen and (max-width: #{$small-devices}) {
+        @content;
+    }
+}
+
+@mixin extra_small_max {
+    @media screen and (max-width: #{$extra-small-devices}) {
+        @content;
+    }
+}
+
+@mixin custom_max {
+    @media only screen and (max-width: #{$custom-devices}) {
+        @content;
+    }
+}
+
+/**
+* Media Queries for min-width
+*/
+
+@mixin large_min {
+    @media only screen and (min-width: #{$large-devices}) {
+        @content;
+    }
+}
+
+@mixin medium_min {
+    @media only screen and (min-width: #{$medium-devices}) {
+        @content;
+    }
+}
+
+@mixin small_min {
+    @media only screen and (min-width: #{$small-devices}) {
+        @content;
+    }
+}
+
+@mixin extra_small_min {
+    @media only screen and (min-width: #{$extra-small-devices}) {
+        @content;
+    }
+}
+
+@mixin custom_max {
+    @media only screen and (max-width: #{$custom-devices}) {
+        @content;
+    }
 }
