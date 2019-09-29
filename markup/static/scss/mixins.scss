@@ -1,15 +1,15 @@
 @import 'vars.scss';
 
 @mixin nl {
-    margin: 0;
-    padding: 0;
-    text-indent: 0;
-    list-style: none;
-    list-style-position: outside;
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style: none;
+  list-style-position: outside;
 }
 
 @mixin commonTransition {
-    transition: all .5s ease;
+  transition: all .5s ease;
 }
 
 /**
@@ -17,33 +17,33 @@
 */
 
 @mixin large_max {
-    @media only screen and (max-width: #{$large-devices}) {
-        @content;
-    }
+  @media only screen and (max-width: #{$large-devices}) {
+    @content;
+  }
 }
 
 @mixin medium_max {
-    @media only screen and (max-width: #{$medium-devices}) {
-        @content;
-    }
+  @media only screen and (max-width: #{$medium-devices}) {
+    @content;
+  }
 }
 
 @mixin small_max {
-    @media only screen and (max-width: #{$small-devices}) {
-        @content;
-    }
+  @media only screen and (max-width: #{$small-devices}) {
+    @content;
+  }
 }
 
 @mixin extra_small_max {
-    @media screen and (max-width: #{$extra-small-devices}) {
-        @content;
-    }
+  @media screen and (max-width: #{$extra-small-devices}) {
+    @content;
+  }
 }
 
 @mixin custom_max {
-    @media only screen and (max-width: #{$custom-devices}) {
-        @content;
-    }
+  @media only screen and (max-width: #{$custom-devices}) {
+    @content;
+  }
 }
 
 /**
@@ -51,31 +51,31 @@
 */
 
 @mixin large_min {
-    @media only screen and (min-width: #{$large-devices}) {
-        @content;
-    }
+  @media only screen and (min-width: #{$large-devices}) {
+    @content;
+  }
 }
 
 @mixin medium_min {
-    @media only screen and (min-width: #{$medium-devices}) {
-        @content;
-    }
+  @media only screen and (min-width: #{$medium-devices}) {
+    @content;
+  }
 }
 
 @mixin small_min {
-    @media only screen and (min-width: #{$small-devices}) {
-        @content;
-    }
+  @media only screen and (min-width: #{$small-devices}) {
+    @content;
+  }
 }
 
 @mixin extra_small_min {
-    @media only screen and (min-width: #{$extra-small-devices}) {
-        @content;
-    }
+  @media only screen and (min-width: #{$extra-small-devices}) {
+    @content;
+  }
 }
 
 @mixin custom_max {
-    @media only screen and (max-width: #{$custom-devices}) {
-        @content;
-    }
+  @media only screen and (max-width: #{$custom-devices}) {
+    @content;
+  }
 }
