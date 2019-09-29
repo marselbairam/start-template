@@ -88,7 +88,7 @@ input[type='date'] {
 }
 
 .hidden-xs {
-  @include medium_max {
+  @include extra_small_max {
     display: none;
   }
 }
@@ -96,7 +96,7 @@ input[type='date'] {
 .visible-xs {
   display: none;
 
-  @include medium_max {
+  @include extra_small_max {
     display: block;
   }
 }
