@@ -8,76 +8,76 @@ if ($('.wow').length) {
 }
 
 // Animate
-LazyLoad.css('static/css/separate-css/animate.min.css');
+LazyLoad.css(`${__dynamicPath__}css/separate-css/animate.min.css`);
 
 // Lazyload
 if ($('img.lazy').length) {
-  LazyLoad.js('static/js/separate-js/lazyload.min.js', function() {
+  LazyLoad.js(`${__dynamicPath__}js/separate-js/lazyload.min.js`, function() {
     lazyLoad();
   });
 }
 
 // Owl-carousel
 if ($('.owl-carousel').length) {
-  LazyLoad.js('static/js/separate-js/owl.carousel.min.js', () => {
+  LazyLoad.js(`${__dynamicPath__}js/separate-js/owl.carousel.min.js`, () => {
     initOwlCarousel();
   });
-  LazyLoad.css('static/css/separate-css/owl.carousel.min.css');
+  LazyLoad.css(`${__dynamicPath__}css/separate-css/owl.carousel.min.css`);
 }
 
 // Dotdotdot
-LazyLoad.js('static/js/separate-js/dotdotdot.min.js', () => {
+LazyLoad.js(`${__dynamicPath__}js/separate-js/dotdotdot.min.js`, () => {
   initTitleDots();
 });
 
 // ScrollLock
-LazyLoad.js('https://cdn.jsdelivr.net/npm/scroll-lock@2.1.2/dist/scroll-lock.min.js');
+LazyLoad.js(`https://cdn.jsdelivr.net/npm/scroll-lock@2.1.2/dist/scroll-lock.min.js`);
 
 // MFP
-LazyLoad.js('static/js/separate-js/jquery.magnific-popup.min.js', () => {
+LazyLoad.js(`${__dynamicPath__}js/separate-js/jquery.magnific-popup.min.js`, () => {
   initMFP();
 });
-LazyLoad.css('static/css/separate-css/magnific-popup.min.css');
+LazyLoad.css(`${__dynamicPath__}css/separate-css/magnific-popup.min.css`);
 
 // jQuery validate
 if ($('form').length) {
-  LazyLoad.js('static/js/separate-js/jquery.validate.min.js', () => {
+  LazyLoad.js(`${__dynamicPath__}js/separate-js/jquery.validate.min.js`, () => {
     initFormValidate();
   });
 }
 
 // jQuery input mask
 if ($('input').length) {
-  LazyLoad.js('static/js/separate-js/jquery.inputmask.bundle.min.js', () => {
+  LazyLoad.js(`${__dynamicPath__}js/separate-js/jquery.inputmask.bundle.min.js`, () => {
     initInputMask();
   });
 }
 
 // Nice-select
 if ($('.nice-select').length) {
-  LazyLoad.js('static/js/separate-js/jquery.nice-select.min.js', () => {
+  LazyLoad.js(`${__dynamicPath__}js/separate-js/jquery.nice-select.min.js`, () => {
     initNiceSelect();
   });
-  LazyLoad.css('static/css/separate-css/nice-select.min.css');
+  LazyLoad.css(`${__dynamicPath__}css/separate-css/nice-select.min.css`);
 }
 
 // Flatpickr
 if ($('.datepicker').length) {
   LazyLoad.js([
-    'static/js/separate-js/flatpickr.min.js',
-    'static/js/separate-js/flatpickr-ru.min.js'
+    `${__dynamicPath__}js/separate-js/flatpickr.min.js`,
+    `${__dynamicPath__}js/separate-js/flatpickr-ru.min.js`
   ], () => {
     initFlatpickr();
   });
-  LazyLoad.css('static/css/separate-css/flatpickr.min.css');
+  LazyLoad.css(`${__dynamicPath__}css/separate-css/flatpickr.min.css`);
 }
 
 // ionRangeSlider
 if ($('.js-range-slider').length) {
-  LazyLoad.js('static/js/separate-js/ion.rangeSlider.min.js', () => {
+  LazyLoad.js(`${__dynamicPath__}js/separate-js/ion.rangeSlider.min.js`, () => {
     initPriceSlider();
   });
-  LazyLoad.css('static/css/separate-css/ion.rangeSlider.min.css');
+  LazyLoad.css(`${__dynamicPath__}css/separate-css/ion.rangeSlider.min.css`);
 }
 
 // Yandex Map
