@@ -24,6 +24,12 @@ body {
  * Typography
  */
 
+.content-container {
+  & *:nth-last-child(-n+1) {
+    margin-bottom: 0;
+  }
+}
+
 ol {
   counter-reset: item;
 
