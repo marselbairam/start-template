@@ -8,37 +8,37 @@
   list-style-position: outside;
 }
 
-@mixin commonTransition {
+@mixin common-transition {
   transition: all .5s ease;
 }
 
 // Media Queries for max-width
 
-@mixin large_max {
+@mixin large-max {
   @media only screen and (max-width: #{$large-devices}) {
     @content;
   }
 }
 
-@mixin medium_max {
+@mixin medium-max {
   @media only screen and (max-width: #{$medium-devices}) {
     @content;
   }
 }
 
-@mixin small_max {
+@mixin small-max {
   @media only screen and (max-width: #{$small-devices}) {
     @content;
   }
 }
 
-@mixin extra_small_max {
+@mixin extra-small-max {
   @media screen and (max-width: #{$extra-small-devices}) {
     @content;
   }
 }
 
-@mixin custom_max {
+@mixin custom-max {
   @media only screen and (max-width: #{$custom-devices}) {
     @content;
   }
@@ -46,31 +46,31 @@
 
 // Media Queries for min-width
 
-@mixin large_min {
+@mixin large-min {
   @media only screen and (min-width: #{$large-devices}) {
     @content;
   }
 }
 
-@mixin medium_min {
+@mixin medium-min {
   @media only screen and (min-width: #{$medium-devices}) {
     @content;
   }
 }
 
-@mixin small_min {
+@mixin small-min {
   @media only screen and (min-width: #{$small-devices}) {
     @content;
   }
 }
 
-@mixin extra_small_min {
+@mixin extra-small-min {
   @media only screen and (min-width: #{$extra-small-devices}) {
     @content;
   }
 }
 
-@mixin custom_max {
+@mixin custom-max {
   @media only screen and (max-width: #{$custom-devices}) {
     @content;
   }
