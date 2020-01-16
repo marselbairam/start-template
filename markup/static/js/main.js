@@ -47,7 +47,7 @@ if ($('form').length) {
 }
 
 // jQuery input mask
-if ($('input').length) {
+if ($('input[type="tel"]').length) {
   LazyLoad.js(`${__dynamicPath__}js/separate-js/jquery.inputmask.bundle.min.js`, () => {
     initInputMask();
   });
