@@ -7,7 +7,7 @@ if ($('.wow').length) {
   });
 }
 
-// initSwiper
+// Swiper
 if ($('.swiper-container').length) {
   LazyLoad.js(`${__dynamicPath__}js/separate-js/swiper.min.js`, () => {
     initSwiper();
