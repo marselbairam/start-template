@@ -26,18 +26,22 @@ if ($('.owl-carousel').length) {
 }
 
 // Dotdotdot
-LazyLoad.js(`${__dynamicPath__}js/separate-js/dotdotdot.min.js`, () => {
-  initTitleDots();
-});
+if ($('.dotdotdot-text').length) {
+  LazyLoad.js(`${__dynamicPath__}js/separate-js/dotdotdot.min.js`, () => {
+    initTitleDots();
+  });
+}
 
 // ScrollLock
 LazyLoad.js(`https://cdn.jsdelivr.net/npm/scroll-lock@2.1.2/dist/scroll-lock.min.js`);
 
 // MFP
-LazyLoad.js(`${__dynamicPath__}js/separate-js/jquery.magnific-popup.min.js`, () => {
-  initMFP();
-});
-LazyLoad.css(`${__dynamicPath__}css/separate-css/magnific-popup.min.css`);
+if ($('.mfp-hide').length) {
+  LazyLoad.js(`${__dynamicPath__}js/separate-js/jquery.magnific-popup.min.js`, () => {
+    initMFP();
+  });
+  LazyLoad.css(`${__dynamicPath__}css/separate-css/magnific-popup.min.css`);
+}
 
 // jQuery validate
 if ($('form').length) {
