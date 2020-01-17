@@ -171,14 +171,18 @@ const initMFP = () => {
     },
     tLoading: 'Загрузка...',
     tClose: 'Закрыть форму',
-    closeMarkup: '<svg class="mfp-close" xmlns="http://www.w3.org/2000/svg" width="20.329" height="20.329" viewBox="0 0 20.329 20.329"><g fill="#a7a7a7"><path class="popup__close-btn" d="M.598 1.794L18.535 19.73a.846.846 0 001.196-1.195L1.794.598A.846.846 0 00.598 1.794z"/><path class="popup__close-btn" d="M19.73 1.794L1.795 19.731a.846.846 0 01-1.196-1.195L18.535.598a.846.846 0 011.196 1.196z"/></g></svg>',
+    closeMarkup: `<span class="mfp-close">
+                   <svg class="close js-modal-close" width="24" height="24">
+                     <use xlink:href="../static/img/general/svg-symbols.svg#close"></use>
+                   </svg>
+                 </span>`,
     ajax: {
       tError: 'Ошибка запроса.'
     }
   });
 
-  $('body').on('click', '.popup__close-btn', function() {
-    $('.popup-wrapper').magnificPopup('close');
+  $('body').on('click', '.js-modal-close', function() {
+    $('.modal').magnificPopup('close');
   });
 };
 
