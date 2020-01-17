@@ -7,22 +7,19 @@ if ($('.wow').length) {
   });
 }
 
-// Animate
-LazyLoad.css(`${__dynamicPath__}css/separate-css/animate.min.css`);
+// initSwiper
+if ($('.swiper-container').length) {
+  LazyLoad.js(`${__dynamicPath__}js/separate-js/swiper.min.js`, () => {
+    initSwiper();
+  });
+  LazyLoad.css(`${__dynamicPath__}css/separate-css/swiper.min.css`);
+}
 
 // Lazyload
 if ($('img.lazy').length) {
   LazyLoad.js(`${__dynamicPath__}js/separate-js/lazyload.min.js`, function() {
     lazyLoad();
   });
-}
-
-// Owl-carousel
-if ($('.owl-carousel').length) {
-  LazyLoad.js(`${__dynamicPath__}js/separate-js/owl.carousel.min.js`, () => {
-    initOwlCarousel();
-  });
-  LazyLoad.css(`${__dynamicPath__}css/separate-css/owl.carousel.min.css`);
 }
 
 // Dotdotdot
@@ -32,15 +29,10 @@ if ($('.dotdotdot-text').length) {
   });
 }
 
-// ScrollLock
-LazyLoad.js(`https://cdn.jsdelivr.net/npm/scroll-lock@2.1.2/dist/scroll-lock.min.js`);
-
-// MFP
-if ($('.mfp-hide').length) {
-  LazyLoad.js(`${__dynamicPath__}js/separate-js/jquery.magnific-popup.min.js`, () => {
-    initMFP();
-  });
-  LazyLoad.css(`${__dynamicPath__}css/separate-css/magnific-popup.min.css`);
+// Simplebar
+if ($('*[data-simplebar]').length) {
+  LazyLoad.js(`static/js/separate-js/simplebar.min.js`);
+  LazyLoad.css(`static/css/separate-css/simplebar.min.css`);
 }
 
 // jQuery validate
@@ -83,6 +75,17 @@ if ($('.js-range-slider').length) {
   });
   LazyLoad.css(`${__dynamicPath__}css/separate-css/ion.rangeSlider.min.css`);
 }
+
+// MFP
+if ($('.mfp-hide').length) {
+  LazyLoad.js(`${__dynamicPath__}js/separate-js/jquery.magnific-popup.min.js`, () => {
+    initMFP();
+  });
+  LazyLoad.css(`${__dynamicPath__}css/separate-css/magnific-popup.min.css`);
+}
+
+// ScrollLock
+LazyLoad.js(`https://cdn.jsdelivr.net/npm/scroll-lock@2.1.2/dist/scroll-lock.min.js`);
 
 // Yandex Map
 if ($('#map').length) {
@@ -130,7 +133,7 @@ const lazyLoad = () => {
   });
 }
 
-const initOwlCarousel = () => {};
+const initSwiper = () => {};
 
 const initTitleDots = () => {
   let windowWidth = $(window).outerWidth();
