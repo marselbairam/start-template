@@ -94,6 +94,11 @@ if ($('#map').length) {
   });
 }
 
+// svg4everybody
+LazyLoad.js(`${__dynamicPath__}js/separate-js/svg4everybody.min.js`, () => {
+  svg4everybody();
+});
+
 /*
  * Common scripts
  */
