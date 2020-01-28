@@ -14,64 +14,100 @@
 
 // Media Queries for max-width
 
-@mixin large-max {
-  @media only screen and (max-width: #{$large-devices}) {
+@mixin desktop-max {
+  @media only screen and (max-width: #{$desktop}) {
     @content;
   }
 }
 
-@mixin medium-max {
-  @media only screen and (max-width: #{$medium-devices}) {
+@mixin laptop-large-max {
+  @media only screen and (max-width: #{$laptop-large}) {
     @content;
   }
 }
 
-@mixin small-max {
-  @media only screen and (max-width: #{$small-devices}) {
+@mixin laptop-medium-max {
+  @media only screen and (max-width: #{$laptop-medium}) {
     @content;
   }
 }
 
-@mixin extra-small-max {
-  @media screen and (max-width: #{$extra-small-devices}) {
+@mixin laptop-small-max {
+  @media only screen and (max-width: #{$laptop-small}) {
     @content;
   }
 }
 
-@mixin custom-max {
-  @media only screen and (max-width: #{$custom-devices}) {
+@mixin tablet-medium-max {
+  @media only screen and (max-width: #{$tablet-medium}) {
+    @content;
+  }
+}
+
+@mixin tablet-small-max {
+  @media only screen and (max-width: #{$tablet-small}) {
+    @content;
+  }
+}
+
+@mixin phone-medium-max {
+  @media only screen and (max-width: #{$phone-medium}) {
+    @content;
+  }
+}
+
+@mixin phone-small-max {
+  @media only screen and (max-width: #{$phone-small}) {
     @content;
   }
 }
 
 // Media Queries for min-width
 
-@mixin large-min {
-  @media only screen and (min-width: #{$large-devices}) {
+@mixin desktop-min {
+  @media only screen and (min-width: #{$desktop}) {
     @content;
   }
 }
 
-@mixin medium-min {
-  @media only screen and (min-width: #{$medium-devices}) {
+@mixin laptop-large-min {
+  @media only screen and (min-width: #{$laptop-large}) {
     @content;
   }
 }
 
-@mixin small-min {
-  @media only screen and (min-width: #{$small-devices}) {
+@mixin laptop-medium-min {
+  @media only screen and (min-width: #{$laptop-medium}) {
     @content;
   }
 }
 
-@mixin extra-small-min {
-  @media only screen and (min-width: #{$extra-small-devices}) {
+@mixin laptop-small-min {
+  @media only screen and (min-width: #{$laptop-small}) {
     @content;
   }
 }
 
-@mixin custom-max {
-  @media only screen and (max-width: #{$custom-devices}) {
+@mixin tablet-medium-min {
+  @media only screen and (min-width: #{$tablet-medium}) {
+    @content;
+  }
+}
+
+@mixin tablet-small-min {
+  @media only screen and (min-width: #{$tablet-small}) {
+    @content;
+  }
+}
+
+@mixin phone-medium-min {
+  @media only screen and (min-width: #{$phone-medium}) {
+    @content;
+  }
+}
+
+@mixin phone-small-min {
+  @media only screen and (min-width: #{$phone-small}) {
     @content;
   }
 }
