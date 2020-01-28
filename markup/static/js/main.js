@@ -94,7 +94,9 @@ if ($('#map').length) {
   });
 }
 
-// Common scripts
+/*
+ * Common scripts
+ */
 
 const isTouchDevice = () => {
   let isTouchDevice = false;
@@ -311,7 +313,9 @@ const yandexMapInit = (coords) => {
   }
 };
 
-// Other scripts
+/*
+ * Other scripts
+ */
 
 const initInputStates = () => {
   let defaultForm = $('.default-form');
