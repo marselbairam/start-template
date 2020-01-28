@@ -1,13 +1,5 @@
 @import 'vars.scss';
 
-@mixin nl {
-  margin: 0;
-  padding: 0;
-  text-indent: 0;
-  list-style: none;
-  list-style-position: outside;
-}
-
 @mixin common-transition {
   transition: all .5s ease;
 }
