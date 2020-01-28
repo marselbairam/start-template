@@ -140,7 +140,25 @@ const lazyLoad = () => {
   });
 }
 
-const initSwiper = () => {};
+const initSwiper = () => {
+  let slider = new Swiper('.swiper-container', {
+    loop: false,
+    slidesPerView: 4,
+    spaceBetween: 32,
+    lazy: {
+      loadPrevNext: true,
+      loadPrevNextAmount: 1,
+    },
+    preloadImages: false,
+    speed: 500,
+    navigation: {
+      prevEl: '',
+      nextEl: ''
+    },
+    watchSlidesProgress: true,
+    watchSlidesVisibility: true
+  });
+};
 
 const initTitleDots = () => {
   let windowWidth = $(window).outerWidth();
