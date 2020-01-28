@@ -246,24 +246,7 @@ input[type='radio'] {
  * Grid
  */
 
-.common-wrapper {
-}
-
 .common-container {
-}
-
-.hidden-xs {
-  @include extra_small_max {
-    display: none;
-  }
-}
-
-.visible-xs {
-  display: none;
-
-  @include extra_small_max {
-    display: block;
-  }
 }
 
 /**
