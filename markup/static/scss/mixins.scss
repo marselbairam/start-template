@@ -4,13 +4,31 @@
   transition: all .5s ease;
 }
 
-// Media Queries for max-width
+/*
+ * Media Queries for max-width
+ */
 
-@mixin desktop-max {
-  @media only screen and (max-width: #{$desktop}) {
+// Desktop
+
+@mixin desktop-large-max {
+  @media only screen and (max-width: #{$desktop-large}) {
     @content;
   }
 }
+
+@mixin desktop-medium-max {
+  @media only screen and (max-width: #{$desktop-medium}) {
+    @content;
+  }
+}
+
+@mixin desktop-small-max {
+  @media only screen and (max-width: #{$desktop-small}) {
+    @content;
+  }
+}
+
+// Laptop
 
 @mixin laptop-large-max {
   @media only screen and (max-width: #{$laptop-large}) {
@@ -30,6 +48,14 @@
   }
 }
 
+// Tablet
+
+@mixin tablet-large-max {
+  @media only screen and (max-width: #{$tablet-large}) {
+    @content;
+  }
+}
+
 @mixin tablet-medium-max {
   @media only screen and (max-width: #{$tablet-medium}) {
     @content;
@@ -38,6 +64,14 @@
 
 @mixin tablet-small-max {
   @media only screen and (max-width: #{$tablet-small}) {
+    @content;
+  }
+}
+
+// Phone
+
+@mixin phone-large-max {
+  @media only screen and (max-width: #{$phone-large}) {
     @content;
   }
 }
@@ -54,13 +88,31 @@
   }
 }
 
-// Media Queries for min-width
+/*
+ * Media Queries for min-width
+ */
 
-@mixin desktop-min {
-  @media only screen and (min-width: #{$desktop}) {
+// Desktop
+
+@mixin desktop-large-min {
+  @media only screen and (min-width: #{$desktop-large}) {
     @content;
   }
 }
+
+@mixin desktop-medium-min {
+  @media only screen and (min-width: #{$desktop-medium}) {
+    @content;
+  }
+}
+
+@mixin desktop-small-min {
+  @media only screen and (min-width: #{$desktop-small}) {
+    @content;
+  }
+}
+
+// Laptop
 
 @mixin laptop-large-min {
   @media only screen and (min-width: #{$laptop-large}) {
@@ -80,6 +132,14 @@
   }
 }
 
+// Tablet
+
+@mixin tablet-large-min {
+  @media only screen and (min-width: #{$tablet-large}) {
+    @content;
+  }
+}
+
 @mixin tablet-medium-min {
   @media only screen and (min-width: #{$tablet-medium}) {
     @content;
@@ -88,6 +148,14 @@
 
 @mixin tablet-small-min {
   @media only screen and (min-width: #{$tablet-small}) {
+    @content;
+  }
+}
+
+// Phone
+
+@mixin phone-large-min {
+  @media only screen and (min-width: #{$phone-large}) {
     @content;
   }
 }

@@ -1,8 +1,15 @@
-$desktop: 1920px;
+$desktop-large: 1920px;
+$desktop-medium: 1600px;
+$desktop-small: 1536px;
+
 $laptop-large: 1440px;
 $laptop-medium: 1336px;
 $laptop-small: 1280px;
+
+$tablet-large: 1024px;
 $tablet-medium: 992px;
 $tablet-small: 768px;
-$phone-medium: 576px;
+
+$phone-large: 576px;
+$phone-medium: 414px;
 $phone-small: 360px;
