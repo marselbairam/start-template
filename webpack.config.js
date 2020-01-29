@@ -28,6 +28,7 @@ let plugins = [
       NODE_ENV: JSON.stringify(process.env.NODE_ENV)
     },
     __dynamicPath__: !compressJs ? "'/static/'" : "'/local/styles/'"
+    // first for dev, second for bitrix build
   })
 ];
 
