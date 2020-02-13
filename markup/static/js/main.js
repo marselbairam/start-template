@@ -382,8 +382,8 @@ const initInputStates = () => {
   }
 };
 
-$(document).ready(() => {
+$(document).ready(function() {
 });
 
-$(window).on('load', () => {
+$(window).on('load', function() {
 });
