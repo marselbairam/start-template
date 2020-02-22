@@ -1,14 +1,62 @@
 @import 'vars.scss';
 
-@mixin common-transition {
-  transition: all .5s ease;
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
 }
 
-/*
- * Media Queries for max-width
- */
+@function calcFluidSize($f-min, $f-max, $w-min, $w-max, $units: px) {
+  $f-min: strip-unit($f-min);
+  $f-max: strip-unit($f-max);
+  $w-min: strip-unit($w-min);
+  $w-max: strip-unit($w-max);
 
-// Desktop
+  $k: ($f-max - $f-min)/($w-max - $w-min);
+  $b: $f-min - $k * $w-min;
+
+  $b: $b + $units;
+
+  @return calc( #{$k} * 100vw + #{$b} );
+}
+
+// Fluid font size
+
+@mixin fluidFontSize($f-min, $f-max, $w-min, $w-max, $fallback: false) {
+
+  font-size: $f-min;
+
+  @media (min-width: $w-min) {
+    @if ($fallback) {
+      font-size: $fallback;
+    }
+    font-size: calcFluidSize($f-min, $f-max, $w-min, $w-max, px);
+  }
+  @media (min-width: $w-max) {
+    font-size: $f-max;
+  }
+}
+
+// Fluid line height
+
+@mixin fluidLineHeight($f-min, $f-max, $w-min, $w-max, $fallback: false) {
+
+  line-height: $f-min;
+
+  @media (min-width: $w-min) {
+    @if ($fallback) {
+      line-height: $fallback;
+    }
+    line-height: calcFluidSize($f-min, $f-max, $w-min, $w-max, px);
+  }
+  @media (min-width: $w-max) {
+    line-height: $f-max;
+  }
+}
+
+// Media queries for max-width
 
 @mixin desktop-large-max {
   @media only screen and (max-width: #{$desktop-large}) {
@@ -28,8 +76,6 @@
   }
 }
 
-// Laptop
-
 @mixin laptop-large-max {
   @media only screen and (max-width: #{$laptop-large}) {
     @content;
@@ -47,8 +93,6 @@
     @content;
   }
 }
-
-// Tablet
 
 @mixin tablet-large-max {
   @media only screen and (max-width: #{$tablet-large}) {
@@ -68,8 +112,6 @@
   }
 }
 
-// Phone
-
 @mixin phone-large-max {
   @media only screen and (max-width: #{$phone-large}) {
     @content;
@@ -88,11 +130,7 @@
   }
 }
 
-/*
- * Media Queries for min-width
- */
-
-// Desktop
+// Media queries for min-width
 
 @mixin desktop-large-min {
   @media only screen and (min-width: #{$desktop-large}) {
@@ -112,8 +150,6 @@
   }
 }
 
-// Laptop
-
 @mixin laptop-large-min {
   @media only screen and (min-width: #{$laptop-large}) {
     @content;
@@ -132,8 +168,6 @@
   }
 }
 
-// Tablet
-
 @mixin tablet-large-min {
   @media only screen and (min-width: #{$tablet-large}) {
     @content;
@@ -151,8 +185,6 @@
     @content;
   }
 }
-
-// Phone
 
 @mixin phone-large-min {
   @media only screen and (min-width: #{$phone-large}) {
