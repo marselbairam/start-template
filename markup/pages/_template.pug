@@ -15,6 +15,13 @@ html(lang='ru')
     .main-wrapper
       block content
 
+    #popup.popup
+      .popup__bg
+      .popup__container
+        .popup__content
+          button.popup__close-btn ×
+          p Popup
+
     +footer()
 
     script(src='%=static=%js/separate-js/jquery.min.js')
