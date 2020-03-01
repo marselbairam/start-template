@@ -1,4 +1,13 @@
 import 'lazyload-js/lazyload.js';
+const focusTrap = require('focus-trap');
+
+const dynamicPath = __dynamicPath__;
+
+// In-View
+LazyLoad.js(`${dynamicPath}js/separate-js/in-view.min.js`, () => {
+  inView('.scrl').on('enter', el => el.classList.add('show'));
+  inView.offset(75);
+});
 
 // WOW
 if ($('.wow').length) {
@@ -9,22 +18,22 @@ if ($('.wow').length) {
 
 // Swiper
 if ($('.swiper-container').length) {
-  LazyLoad.js(`${__dynamicPath__}js/separate-js/swiper.min.js`, () => {
+  LazyLoad.js(`${dynamicPath}js/separate-js/swiper.min.js`, () => {
     initSwiper();
   });
-  LazyLoad.css(`${__dynamicPath__}css/separate-css/swiper.min.css`);
+  LazyLoad.css(`${dynamicPath}css/separate-css/swiper.min.css`);
 }
 
 // Lazyload
 if ($('img.lazy').length) {
-  LazyLoad.js(`${__dynamicPath__}js/separate-js/lazyload.min.js`, function() {
+  LazyLoad.js(`${dynamicPath}js/separate-js/lazyload.min.js`, () => {
     lazyLoad();
   });
 }
 
 // Dotdotdot
 if ($('.dotdotdot-text').length) {
-  LazyLoad.js(`${__dynamicPath__}js/separate-js/dotdotdot.min.js`, () => {
+  LazyLoad.js(`${dynamicPath}js/separate-js/dotdotdot.min.js`, () => {
     initTitleDots();
   });
 }
@@ -37,55 +46,55 @@ if ($('*[data-simplebar]').length) {
 
 // jQuery validate
 if ($('form').length) {
-  LazyLoad.js(`${__dynamicPath__}js/separate-js/jquery.validate.min.js`, () => {
+  LazyLoad.js(`${dynamicPath}js/separate-js/jquery.validate.min.js`, () => {
     initFormValidate();
   });
 }
 
 // jQuery input mask
 if ($('input[type="tel"]').length) {
-  LazyLoad.js(`${__dynamicPath__}js/separate-js/jquery.inputmask.bundle.min.js`, () => {
+  LazyLoad.js(`${dynamicPath}js/separate-js/jquery.inputmask.bundle.min.js`, () => {
     initInputMask();
   });
 }
 
 // Nice-select
 if ($('.nice-select').length) {
-  LazyLoad.js(`${__dynamicPath__}js/separate-js/jquery.nice-select.min.js`, () => {
+  LazyLoad.js(`${dynamicPath}js/separate-js/jquery.nice-select.min.js`, () => {
     initNiceSelect();
   });
-  LazyLoad.css(`${__dynamicPath__}css/separate-css/nice-select.min.css`);
+  LazyLoad.css(`${dynamicPath}css/separate-css/nice-select.min.css`);
 }
 
 // Flatpickr
 if ($('.datepicker').length) {
   LazyLoad.js([
-    `${__dynamicPath__}js/separate-js/flatpickr.min.js`,
-    `${__dynamicPath__}js/separate-js/flatpickr-ru.min.js`
+    `${dynamicPath}js/separate-js/flatpickr.min.js`,
+    `${dynamicPath}js/separate-js/flatpickr-ru.min.js`
   ], () => {
     initFlatpickr();
   });
-  LazyLoad.css(`${__dynamicPath__}css/separate-css/flatpickr.min.css`);
+  LazyLoad.css(`${dynamicPath}css/separate-css/flatpickr.min.css`);
 }
 
 // ionRangeSlider
 if ($('.js-range-slider').length) {
-  LazyLoad.js(`${__dynamicPath__}js/separate-js/ion.rangeSlider.min.js`, () => {
+  LazyLoad.js(`${dynamicPath}js/separate-js/ion.rangeSlider.min.js`, () => {
     initPriceSlider();
   });
-  LazyLoad.css(`${__dynamicPath__}css/separate-css/ion.rangeSlider.min.css`);
+  LazyLoad.css(`${dynamicPath}css/separate-css/ion.rangeSlider.min.css`);
 }
 
 // MFP
 if ($('.mfp-hide').length) {
-  LazyLoad.js(`${__dynamicPath__}js/separate-js/jquery.magnific-popup.min.js`, () => {
+  LazyLoad.js(`${dynamicPath}js/separate-js/jquery.magnific-popup.min.js`, () => {
     initMFP();
   });
-  LazyLoad.css(`${__dynamicPath__}css/separate-css/magnific-popup.min.css`);
+  LazyLoad.css(`${dynamicPath}css/separate-css/magnific-popup.min.css`);
 }
 
 // ScrollLock
-LazyLoad.js(`https://cdn.jsdelivr.net/npm/scroll-lock@2.1.2/dist/scroll-lock.min.js`);
+LazyLoad.js('https://cdn.jsdelivr.net/npm/scroll-lock@2.1.2/dist/scroll-lock.min.js');
 
 // Yandex Map
 if ($('#map').length) {
@@ -95,7 +104,7 @@ if ($('#map').length) {
 }
 
 // svg4everybody
-LazyLoad.js(`${__dynamicPath__}js/separate-js/svg4everybody.min.js`, () => {
+LazyLoad.js(`${dynamicPath}js/separate-js/svg4everybody.min.js`, () => {
   svg4everybody();
 });
 
@@ -136,7 +145,7 @@ const initWOW = () => {
 
 const lazyLoad = () => {
   let lazyLazy = new LazyLoad({
-    elements_selector: '.lazy',
+    elements_selector: '.lazy'
   });
 }
 
@@ -181,16 +190,16 @@ const initMFP = () => {
     mainClass: 'animated fadeIn',
     midClick: true,
     callbacks: {
-      open: () => {
+      open: function() {
         scrollLock.disablePageScroll();
         var mfpContainer = $('.mfp-container');
 
         mfpContainer[0].setAttribute('data-scroll-lock-scrollable', '');
       },
-      beforeClose: () => {
+      beforeClose: function() {
         $('.mfp-bg, .mfp-wrap').addClass('fadeOut');
       },
-      close: () => {
+      close: function() {
         scrollLock.enablePageScroll();
       }
     },
@@ -296,13 +305,13 @@ const initPriceSlider = () => {
     let dataRangeSlider = rangeSlider.data('ionRangeSlider');
 
     if (dataRangeSlider.length) {
-      $('#min-price-int').on('change', () => {
+      $('#min-price-int').on('change', function() {
         dataRangeSlider.update({
           from: $(this).val()
         });
       });
 
-      $('#max-price-int').on('change', () => {
+      $('#max-price-int').on('change', function() {
         dataRangeSlider.update({
           to: $(this).val()
         });
@@ -341,10 +350,10 @@ const yandexMapInit = (coords) => {
  */
 
 const initInputStates = () => {
-  let defaultForm = $('.default-form');
+  const defaultForm = $('.default-form');
 
   if (defaultForm.length) {
-    let inputs = document.querySelectorAll('.default-form__input'),
+    const inputs = document.querySelectorAll('.default-form__input'),
         inputsPlaceholder = document.querySelectorAll('.default-form__input-placeholder');
 
     for (let i = 0; i < inputs.length; i++) {
@@ -353,8 +362,8 @@ const initInputStates = () => {
       }
     }
 
-    for (var i = 0; i < inputs.length; i++) {
-      (function(n) {
+    for (let i = 0; i < inputs.length; i++) {
+      ((n) => {
         inputs[n].addEventListener('click', function() {
           inputsPlaceholder[n].classList.add('default-form__input-placeholder_active');
         });
@@ -382,7 +391,26 @@ const initInputStates = () => {
   }
 };
 
+const popupToggle = () => {
+  let trap;
+
+  $('.popup-open').on('click', function(e) {
+    e.preventDefault();
+    const popup = $($(this).attr('href'));
+    popup.addClass('active');
+    trap = focusTrap('.popup.active');
+    trap.activate();
+  });
+
+  const popups = $('.popup');
+  $('.popup__close-btn').on('click', function() {
+    popups.removeClass('active');
+    trap.deactivate();
+  });
+};
+
 $(document).ready(function() {
+  popupToggle();
 });
 
 $(window).on('load', function() {
