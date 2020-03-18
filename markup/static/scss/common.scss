@@ -1,3 +1,9 @@
+html,
+body {
+  box-sizing: border-box;
+  min-height: 100%;
+}
+
 html {
   -ms-overflow-style: scrollbar;
   -webkit-text-size-adjust: none;
@@ -5,6 +11,7 @@ html {
 }
 
 body {
+  overflow-x: hidden;
   font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
   font-weight: 400;
   text-rendering: optimizeSpeed;
@@ -66,7 +73,7 @@ ol {
   }
 }
 
-.content-container {
+.m-p-reset {
   & > *:first-child {
     margin-top: 0;
   }
