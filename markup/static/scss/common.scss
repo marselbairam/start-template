@@ -1,5 +1,9 @@
 html,
 body {
+<<<<<<< HEAD
+=======
+  box-sizing: border-box;
+>>>>>>> 5a2a0d07e971939b2786f038ca1d76e901702738
   min-height: 100%;
 }
 
@@ -10,6 +14,7 @@ html {
 }
 
 body {
+  overflow-x: hidden;
   font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
   font-weight: 400;
   text-rendering: optimizeSpeed;
@@ -71,7 +76,11 @@ ol {
   }
 }
 
+<<<<<<< HEAD
 .m-p-b-reset {
+=======
+.m-p-reset {
+>>>>>>> 5a2a0d07e971939b2786f038ca1d76e901702738
   & > *:first-child {
     margin-top: 0;
     padding-top: 0;
