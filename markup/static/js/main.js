@@ -349,6 +349,91 @@ const yandexMapInit = (coords) => {
  * Other scripts
  */
 
+const html = $('html');
+const body = $('body');
+
+let previousScrollY = 0;
+
+const disableScroll = () => {
+  if (isTouchDevice()) {
+    previousScrollY = window.scrollY;
+    html.addClass('scroll-lock').css({
+      position: 'fixed',
+      overflow: 'hidden',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      marginTop: -previousScrollY
+    });
+  } else {
+    body.css('overflow-y', 'hidden');
+    if (document.body.scrollHeight > document.documentElement.clientHeight) {
+      body.css('padding-right', `${getScrollbarWidth()}px`);
+    }
+  }
+};
+
+const enableScroll = () => {
+  if (isTouchDevice()) {
+    html.removeClass('scroll-lock').css({
+      position: 'static',
+      overflow: 'visible',
+      top: 'auto',
+      left: 'auto',
+      right: 'auto',
+      bottom: 'auto',
+      marginTop: 0
+    });
+    window.scrollTo(0, previousScrollY);
+  } else {
+    body.css({
+      overflowY: 'visible',
+      paddingRight: '0'
+    });
+  }
+};
+
+const popupToggle = () => {
+  let trap;
+  let overlay = $('.overlay');
+
+  $('.popup-open').on('click', function(e) {
+    e.preventDefault();
+    const popup = $($(this).attr('href'));
+    disableScroll();
+    overlay.addClass('active');
+    popup.addClass('active');
+    trap = focusTrap('.popup.active');
+    trap.activate();
+  });
+
+  const hidePopups = () => {
+    const popups = $('.popup');
+    $('.popup.active').addClass('removing');
+    overlay.removeClass('active');
+    setTimeout(function() {
+      enableScroll();
+      popups.removeClass('active removing');
+    }, 400);
+    trap.deactivate();
+  };
+
+  $('.popup__close-btn').on('click', function() {
+    hidePopups();
+  });
+
+  $(document).on('mouseup', function(e) {
+    if ($('.popup.active').length) {
+      let div = $('.popup__content');
+      if (!div.is(e.target)
+        && div.has(e.target).length === 0) {
+        hidePopups();
+      }
+    }
+  });
+};
+
 const initInputStates = () => {
   const defaultForm = $('.default-form');
 
@@ -389,24 +474,6 @@ const initInputStates = () => {
       })(i);
     }
   }
-};
-
-const popupToggle = () => {
-  let trap;
-
-  $('.popup-open').on('click', function(e) {
-    e.preventDefault();
-    const popup = $($(this).attr('href'));
-    popup.addClass('active');
-    trap = focusTrap('.popup.active');
-    trap.activate();
-  });
-
-  const popups = $('.popup');
-  $('.popup__close-btn').on('click', function() {
-    popups.removeClass('active');
-    trap.deactivate();
-  });
 };
 
 $(document).ready(function() {
