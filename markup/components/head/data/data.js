@@ -1,6 +1,6 @@
 head: {
     defaults: {
-        title: 'Page',
+        title: 'default title',
         useSocialMetaTags: true
     }
 }
