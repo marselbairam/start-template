@@ -422,7 +422,7 @@ const popupToggle = () => {
   });
 };
 
-const initInputStates = () => {
+const inputStates = () => {
   const defaultForm = $('.default-form');
 
   if (defaultForm.length) {
