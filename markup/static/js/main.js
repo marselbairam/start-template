@@ -1,5 +1,4 @@
 import 'lazyload-js/lazyload.js';
-const focusTrap = require('focus-trap');
 
 const dynamicPath = __dynamicPath__;
 
@@ -92,9 +91,6 @@ if ($('.mfp-hide').length) {
   });
   LazyLoad.css(`${dynamicPath}css/separate-css/magnific-popup.min.css`);
 }
-
-// ScrollLock
-LazyLoad.js('https://cdn.jsdelivr.net/npm/scroll-lock@2.1.2/dist/scroll-lock.min.js');
 
 // Yandex Map
 if ($('#map').length) {
@@ -395,28 +391,20 @@ const enableScroll = () => {
 };
 
 const popupToggle = () => {
-  let trap;
-  let overlay = $('.overlay');
-
   $('.popup-open').on('click', function(e) {
     e.preventDefault();
     const popup = $($(this).attr('href'));
     disableScroll();
-    overlay.addClass('active');
     popup.addClass('active');
-    trap = focusTrap('.popup.active');
-    trap.activate();
   });
 
   const hidePopups = () => {
     const popups = $('.popup');
     $('.popup.active').addClass('removing');
-    overlay.removeClass('active');
     setTimeout(function() {
       enableScroll();
       popups.removeClass('active removing');
-    }, 400);
-    trap.deactivate();
+    }, 500);
   };
 
   $('.popup__close-btn').on('click', function() {

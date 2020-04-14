@@ -15,13 +15,13 @@ html(lang='ru')
     .main-wrapper
       block content
 
-    .overlay
-
     #popup.popup
+      .popup__overlay
       .popup__container
+        button.popup__close-btn ×
         .popup__content
-          button.popup__close-btn ×
-          p Popup
+          .popup__content-inner
+            p Popup
 
     +footer()
 
