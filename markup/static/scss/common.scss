@@ -1,10 +1,10 @@
 html,
 body {
   box-sizing: border-box;
-  min-height: 100%;
 }
 
 html {
+  height: 100%;
   -ms-overflow-style: scrollbar;
   -webkit-text-size-adjust: none;
   -ms-text-size-adjust: 100%;
@@ -12,6 +12,7 @@ html {
 
 body {
   overflow-x: hidden;
+  min-height: 100%;
   font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
   font-weight: 400;
   text-rendering: optimizeSpeed;
