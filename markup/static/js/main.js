@@ -1,109 +1,3 @@
-import 'lazyload-js/lazyload.js';
-
-const dynamicPath = __dynamicPath__;
-
-// In-View
-LazyLoad.js(`${dynamicPath}js/separate-js/in-view.min.js`, () => {
-  inView('.scrl').on('enter', el => el.classList.add('show'));
-  inView.offset(75);
-});
-
-// WOW
-if ($('.wow').length) {
-  LazyLoad.js('https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js', () => {
-    initWOW();
-  });
-}
-
-// Swiper
-if ($('.swiper-container').length) {
-  LazyLoad.js(`${dynamicPath}js/separate-js/swiper.min.js`, () => {
-    initSwiper();
-  });
-  LazyLoad.css(`${dynamicPath}css/separate-css/swiper.min.css`);
-}
-
-// Lazyload
-if ($('img.lazy').length) {
-  LazyLoad.js(`${dynamicPath}js/separate-js/lazyload.min.js`, () => {
-    lazyLoad();
-  });
-}
-
-// Dotdotdot
-if ($('.dotdotdot-text').length) {
-  LazyLoad.js(`${dynamicPath}js/separate-js/dotdotdot.min.js`, () => {
-    initTitleDots();
-  });
-}
-
-// Simplebar
-if ($('*[data-simplebar]').length) {
-  LazyLoad.js(`static/js/separate-js/simplebar.min.js`);
-  LazyLoad.css(`static/css/separate-css/simplebar.min.css`);
-}
-
-// jQuery validate
-if ($('form').length) {
-  LazyLoad.js(`${dynamicPath}js/separate-js/jquery.validate.min.js`, () => {
-    initFormValidate();
-  });
-}
-
-// jQuery input mask
-if ($('input[type="tel"]').length) {
-  LazyLoad.js(`${dynamicPath}js/separate-js/jquery.inputmask.bundle.min.js`, () => {
-    initInputMask();
-  });
-}
-
-// Nice-select
-if ($('.nice-select').length) {
-  LazyLoad.js(`${dynamicPath}js/separate-js/jquery.nice-select.min.js`, () => {
-    initNiceSelect();
-  });
-  LazyLoad.css(`${dynamicPath}css/separate-css/nice-select.min.css`);
-}
-
-// Flatpickr
-if ($('.datepicker').length) {
-  LazyLoad.js([
-    `${dynamicPath}js/separate-js/flatpickr.min.js`,
-    `${dynamicPath}js/separate-js/flatpickr-ru.min.js`
-  ], () => {
-    initFlatpickr();
-  });
-  LazyLoad.css(`${dynamicPath}css/separate-css/flatpickr.min.css`);
-}
-
-// ionRangeSlider
-if ($('.js-range-slider').length) {
-  LazyLoad.js(`${dynamicPath}js/separate-js/ion.rangeSlider.min.js`, () => {
-    initPriceSlider();
-  });
-  LazyLoad.css(`${dynamicPath}css/separate-css/ion.rangeSlider.min.css`);
-}
-
-// MFP
-if ($('.mfp-hide').length) {
-  LazyLoad.js(`${dynamicPath}js/separate-js/jquery.magnific-popup.min.js`, () => {
-    initMFP();
-  });
-  LazyLoad.css(`${dynamicPath}css/separate-css/magnific-popup.min.css`);
-}
-
-// Yandex Map
-if ($('#map').length) {
-  LazyLoad.js('https://api-maps.yandex.ru/2.1/?apikey=YOUR_API_KEY&load=package.standard&lang=ru-RU', () => {
-    yandexMapInit();
-  });
-}
-
-// svg4everybody
-LazyLoad.js(`${dynamicPath}js/separate-js/svg4everybody.min.js`, () => {
-  svg4everybody();
-});
-
 /*
  * Common scripts
  */
@@ -143,7 +37,8 @@ const lazyLoad = () => {
   let lazyLazy = new LazyLoad({
     elements_selector: '.lazy'
   });
-}
+  lazyLazy.update();
+};
 
 const initSwiper = () => {
   let slider = new Swiper('.swiper-container', {
@@ -316,14 +211,14 @@ const initPriceSlider = () => {
   }
 };
 
-const yandexMapInit = (coords) => {
+const yandexMapInit = (coords, zoom, iconImageHref) => {
   let map = $('#map');
 
   if (map.length) {
     ymaps.ready(function() {
       let myMap = new ymaps.Map('map', {
             center: [coords],
-            zoom: 15,
+            zoom: zoom,
             controls: ['zoomControl']
           }, {
             searchControlProvider: 'yandex#search'
@@ -331,7 +226,7 @@ const yandexMapInit = (coords) => {
 
           myPlacemark = new ymaps.Placemark([coords], {}, {
             iconLayout: 'default#image',
-            iconImageHref: 'static/img/general/pin.svg',
+            iconImageHref: iconImageHref,
             iconImageSize: [142, 95],
             iconImageOffset: [-5, -38]
           });
