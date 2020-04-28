@@ -135,12 +135,26 @@ const initFormValidate = () => {
 };
 
 const initInputMask = () => {
-  let phoneInputs = $('input[type="tel"]');
+  const phoneInputs = document.querySelectorAll('input[type="tel"]');
 
-  if (phoneInputs.length) {
-    phoneInputs.inputmask({
-      'mask': '+7(999)999-99-99'
-    });
+  if (phoneInputs) {
+    const config = {
+      showMaskOnHover: false,
+      clearIncomplete: true,
+      onincomplete: function () {
+        phoneInputs.forEach(el => {
+          if (el.classList.contains('valid') && el.value === '') {
+            el.classList.remove('valid');
+            el.closest('.input-item')
+            .querySelector('.input-item__label')
+            .classList.remove('input-item__label_active');
+          }
+        });
+      }
+    };
+
+    const im = new InputMask('+7(999)999-99-99', config);
+    im.mask(phoneInputs);
   }
 };
 
