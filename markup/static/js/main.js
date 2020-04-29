@@ -117,18 +117,7 @@ const initFormValidate = () => {
   if (defaultForm.length) {
     defaultForm.each(function() {
       $(this).validate({
-        errorPlacement: function(error, element) {},
-        invalidHandler: function() {
-          setInterval(function() {
-            $('input, textarea').each(function() {
-              if ($(this).hasClass('error')) {
-                $(this).closest('.default-form__input-wrapper').addClass('error');
-              } else {
-                $(this).closest('.default-form__input-wrapper').removeClass('error');
-              }
-            });
-          }, 100);
-        }
+        errorPlacement: function(error, element) {}
       });
     });
   }
