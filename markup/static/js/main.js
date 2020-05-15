@@ -1,3 +1,13 @@
+import $ from 'jquery';
+import inView from 'in-view';
+import LazyLoad from 'vanilla-lazyload';
+import { Swiper, Navigation, Lazy, Autoplay } from 'swiper/js/swiper.esm.js';
+Swiper.use([Navigation, Lazy, Autoplay]);
+import 'swiper/css/swiper.min.css';
+import validate from 'jquery-validation';
+import InputMask from 'inputmask';
+import svg4everybody from 'svg4everybody';
+
 /*
  * Common scripts
  */
@@ -29,86 +39,24 @@ const getScrollbarWidth = () => {
   return scrollbarWidth;
 };
 
-const initWOW = () => {
-  new WOW().init();
+const initInView = () => {
+  inView('.scrl').on('enter', el => {
+    el.classList.add('visible');
+
+    if (el.classList.contains('animate-title')) {
+      setTimeout(function() {
+        el.classList.add('transition-none');
+      }, 1800);
+    }
+  });
+  inView.offset(75);
 };
 
-const lazyLoad = () => {
+const initLazyLoad = () => {
   let lazyLazy = new LazyLoad({
     elements_selector: '.lazy'
   });
   lazyLazy.update();
-};
-
-const initSwiper = () => {
-  let slider = new Swiper('.swiper-container', {
-    loop: false,
-    slidesPerView: 4,
-    spaceBetween: 32,
-    lazy: {
-      loadPrevNext: true,
-      loadPrevNextAmount: 1,
-    },
-    preloadImages: false,
-    speed: 500,
-    navigation: {
-      prevEl: '',
-      nextEl: ''
-    },
-    watchSlidesProgress: true,
-    watchSlidesVisibility: true
-  });
-};
-
-const initTitleDots = () => {
-  let windowWidth = $(window).outerWidth();
-
-  let title = $('.example-title');
-  title.dotdotdot({
-    height: 60
-  });
-  if (windowWidth <= 1366) {
-    title.dotdotdot({
-      height: 50
-    });
-  }
-};
-
-const initMFP = () => {
-  $('.popup-open').magnificPopup({
-    type: 'inline',
-    removalDelay: 1000,
-    mainClass: 'animated fadeIn',
-    midClick: true,
-    callbacks: {
-      open: function() {
-        scrollLock.disablePageScroll();
-        var mfpContainer = $('.mfp-container');
-
-        mfpContainer[0].setAttribute('data-scroll-lock-scrollable', '');
-      },
-      beforeClose: function() {
-        $('.mfp-bg, .mfp-wrap').addClass('fadeOut');
-      },
-      close: function() {
-        scrollLock.enablePageScroll();
-      }
-    },
-    tLoading: 'Загрузка...',
-    tClose: 'Закрыть форму',
-    closeMarkup: `<span class="mfp-close">
-                   <svg class="close js-modal-close" width="24" height="24">
-                     <use xlink:href="../static/img/general/svg-symbols.svg#close"></use>
-                   </svg>
-                 </span>`,
-    ajax: {
-      tError: 'Ошибка запроса.'
-    }
-  });
-
-  $('body').on('click', '.js-modal-close', function() {
-    $('.modal').magnificPopup('close');
-  });
 };
 
 const initFormValidate = () => {
@@ -117,7 +65,17 @@ const initFormValidate = () => {
   if (defaultForm.length) {
     defaultForm.each(function() {
       $(this).validate({
-        errorPlacement: function(error, element) {}
+        errorPlacement: function(error, element) {},
+        highlight: function (element, errorClass, validClass) {
+          $(element).addClass(errorClass).removeClass(validClass);
+        },
+        unhighlight: function (element, errorClass, validClass) {
+          if ($(element).attr('type') === 'email' && $(element).val() === '') {
+            $(element).removeClass(errorClass).removeClass(validClass);
+          } else {
+            $(element).removeClass(errorClass).addClass(validClass);
+          }
+        },
       });
     });
   }
@@ -135,8 +93,8 @@ const initInputMask = () => {
           if (el.classList.contains('valid') && el.value === '') {
             el.classList.remove('valid');
             el.closest('.input-item')
-            .querySelector('.input-item__label')
-            .classList.remove('input-item__label_active');
+              .querySelector('.input-item__label')
+              .classList.remove('input-item__label_active');
           }
         });
       }
@@ -144,73 +102,6 @@ const initInputMask = () => {
 
     const im = new InputMask('+7(999)999-99-99', config);
     im.mask(phoneInputs);
-  }
-};
-
-const initNiceSelect = () => {
-  let niceSelectItems = $('select.nice-select');
-
-  if (niceSelectItems.length) {
-    niceSelectItems.niceSelect();
-  }
-};
-
-const initFlatpickr = () => {
-  let datePickerItems = $('.datepicker');
-
-  if (datePickerItems.length) {
-    datePickerItems.flatpickr({
-      'locale': 'ru',
-      'dateFormat': 'd.m.y'
-    });
-  }
-};
-
-const initPriceSlider = () => {
-  let rangeSlider = $('.js-range-slider');
-
-  if (rangeSlider.length) {
-
-    rangeSlider.ionRangeSlider({
-      'type': 'double',
-      'min': '990',
-      'max': '92990',
-      'from': '990',
-      'to': '92990',
-      'hide_min_max': true,
-      'hide_from_to': true
-    });
-
-    rangeSlider.on('change', function() {
-      let $inp = $(this),
-          v = $inp.prop('value'),
-          min = v.split(';')[0],
-          max = v.split(';')[1],
-          $minPriceInt = $('#min-price-int'),
-          $maxPriceInt = $('#max-price-int');
-
-      $minPriceInt.val(min);
-      $maxPriceInt.val(max);
-
-      $minPriceInt.attr('min', min);
-      $maxPriceInt.attr('max', max);
-    });
-
-    let dataRangeSlider = rangeSlider.data('ionRangeSlider');
-
-    if (dataRangeSlider.length) {
-      $('#min-price-int').on('change', function() {
-        dataRangeSlider.update({
-          from: $(this).val()
-        });
-      });
-
-      $('#max-price-int').on('change', function() {
-        dataRangeSlider.update({
-          to: $(this).val()
-        });
-      });
-    }
   }
 };
 
@@ -237,6 +128,10 @@ const yandexMapInit = (coords, zoom, iconImageHref) => {
       myMap.geoObjects.add(myPlacemark);
     });
   }
+};
+
+const initSvg4everybody = () => {
+  svg4everybody();
 };
 
 /*
@@ -318,6 +213,12 @@ const popupToggle = () => {
       }
     }
   });
+};
+
+const openPopup = (id) => {
+  const popup = $(id);
+  disableScroll();
+  popup.addClass('active');
 };
 
 const inputStates = () => {
