@@ -16,6 +16,10 @@ let outputFileNameTemplate = '[name]';
 let modulesDirectories = ['node_modules'];
 let rules = [
   {
+    test: /\.css$/i,
+    use: ['style-loader', 'css-loader']
+  },
+  {
     test: /\.js$/,
     loader: 'source-map-loader',
     enforce: 'pre'
