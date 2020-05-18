@@ -30,9 +30,7 @@ let plugins = [
   new webpack.DefinePlugin({
     'process.env': {
       NODE_ENV: JSON.stringify(process.env.NODE_ENV)
-    },
-    __dynamicPath__: !compressJs ? "'/static/'" : "'/local/styles/'"
-    // first for dev, second for bitrix build
+    }
   })
 ];
 
