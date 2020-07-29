@@ -264,7 +264,7 @@ const inputStates = () => {
 };
 
 $(document).ready(function() {
-  popupToggle();
+  initSvg4everybody();
 });
 
 $(window).on('load', function() {
