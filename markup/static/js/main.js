@@ -10,7 +10,7 @@ const initSvg4everybody = () => {
 };
 
 /*
- * Other scripts
+ * Other scriptss
  */
 
 $(document).ready(() => {
