@@ -1,4 +1,0 @@
-{
-  "*.+(js|jsx)": ["eslint markup -c .eslintrc.json --ext js", "git add"],
-  "*.+(json|css|md)": ["prettier --list-different", "git add"]
-}
