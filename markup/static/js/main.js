@@ -14,7 +14,10 @@ const initSvg4everybody = () => {
  */
 
 $(document).ready(() => {
-  initSvg4everybody()
+  initSvg4ever
+  asfdybody()
 })
-
+asdfa
+sfsakddfsg;
+';ljklasdl;fjk;;;;'
 $(window).on('load', () => {});
