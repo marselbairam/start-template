@@ -25,7 +25,6 @@ let rules = [
     enforce: 'pre'
   }
 ];
-
 let plugins = [
   new webpack.DefinePlugin({
     'process.env': {
@@ -33,7 +32,6 @@ let plugins = [
     }
   })
 ];
-
 let minimizers = [];
 
 if (process.env.npmRoot) {
@@ -43,53 +41,53 @@ if (process.env.npmRoot) {
 if (compressJs) {
   outputFileNameTemplate += `${tars.options.build.hash}.min`;
   minimizers.push(
-      new TerserJsPlugin({
-        terserOptions: {
-          compress: {
-            /* eslint-disable camelcase */
-            drop_console: tars.config.js.removeConsoleLog,
-            drop_debugger: tars.config.js.removeConsoleLog
-            /* eslint-enable camelcase */
-          },
-          mangle: false
-        }
-      })
+    new TerserJsPlugin({
+      terserOptions: {
+        compress: {
+          /* eslint-disable camelcase */
+          drop_console: tars.config.js.removeConsoleLog,
+          drop_debugger: tars.config.js.removeConsoleLog
+          /* eslint-enable camelcase */
+        },
+        mangle: false
+      }
+    })
   );
 }
 
 if (tars.config.js.webpack.providePlugin) {
   plugins.push(
-      new webpack.ProvidePlugin(tars.config.js.webpack.providePlugin)
+    new webpack.ProvidePlugin(tars.config.js.webpack.providePlugin)
   );
 }
 
 if (tars.options.watch.isActive && tars.config.js.webpack.useHMR) {
   plugins.push(
-      new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin()
   );
 }
 
 if (tars.config.js.lint) {
   rules.push(
-      {
-        test: /\.js$/,
-        loader: 'eslint-loader',
-        enforce: 'pre',
-        include: `${cwd}/markup`,
-        options: {
-          configFile: `${cwd}/.eslintrc`
-        }
+    {
+      test: /\.js$/,
+      loader: 'eslint-loader',
+      enforce: 'pre',
+      include: `${cwd}/markup`,
+      options: {
+        configFile: `${cwd}/.eslintrc`
       }
+    }
   );
 }
 
 if (tars.config.js.useBabel) {
   rules.push(
-      {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        include: /markup/
-      }
+    {
+      test: /\.js$/,
+      loader: 'babel-loader',
+      include: /markup/
+    }
   );
 }
 
@@ -122,7 +120,6 @@ function prepareEntryPoints(entryConfig) {
 
   return entryConfig;
 }
-
 module.exports = {
   mode: webpackMode,
   // We have to add some pathes to entry point in case of using HMR
@@ -144,7 +141,7 @@ module.exports = {
     rules
   },
 
-  plugins: plugins,
+  plugins,
 
   resolveLoader: {
     modules: modulesDirectories

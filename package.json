@@ -7,22 +7,38 @@
   "dependencies": {
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
-    "in-view": "^0.6.1",
-    "inputmask": "^5.0.3",
     "jquery": "^3.5.0",
-    "jquery-validation": "^1.19.1",
-    "svg4everybody": "^2.1.9",
-    "swiper": "^5.3.7",
-    "vanilla-lazyload": "^15.1.1"
+    "svg4everybody": "^2.1.9"
   },
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
     "css-loader": "^3.5.2",
-    "gulp": "^3.9.1",
+    "eslint": "^7.6.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "gulp": "4.0.2",
+    "prettier": "^2.0.5",
     "style-loader": "^1.1.4"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "eslint"
+    ],
+    "*.{js,jsx,json,md}": [
+      "prettier --list-different"
+    ]
+  },
+  "check-staged": "lint-staged"
 }

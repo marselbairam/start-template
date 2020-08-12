@@ -1,2 +1,4 @@
-**/_*.js
-plugins-config.json
+node_modules/*
+backup/*
+dev/*
+builds/*

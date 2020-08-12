@@ -6,7 +6,7 @@ html(lang='ru')
   include ../components/footer/footer.pug
 
   head
-    +head(head.defaults)
+    +head()
   body
     | %=symbols=%
 
@@ -14,14 +14,6 @@ html(lang='ru')
 
     .main-wrapper
       block content
-
-    #popup.popup
-      .popup__overlay
-      .popup__container
-        button.popup__close-btn ×
-        .popup__content
-          .popup__content-inner
-            p Popup
 
     +footer()
 
