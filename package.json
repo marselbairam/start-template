@@ -19,6 +19,8 @@
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-prettier": "^3.1.4",
     "gulp": "4.0.2",
+    "husky": "^0.14.3",
+    "lint-staged": "^10.2.11",
     "prettier": "^2.0.5",
     "style-loader": "^1.1.4"
   },
@@ -26,19 +28,5 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC",
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{js,jsx}": [
-      "eslint"
-    ],
-    "*.{js,jsx,json,md}": [
-      "prettier --list-different"
-    ]
-  },
-  "check-staged": "lint-staged"
+  "license": "ISC"
 }
