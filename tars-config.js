@@ -15,12 +15,15 @@ module.exports = {
     "js": {
         "workflow": "modular",
         "bundler": "webpack",
-        "lint": false,
+        "lint": true,
         "useBabel": true,
         "removeConsoleLog": true,
         "webpack": {
             "useHMR": false,
-            "providePlugin": {}
+            "providePlugin": {
+              $: 'jquery',
+              jQuery: 'jquery'
+            }
         },
         "jsPathsToConcatBeforeModulesJs": [],
         "lintJsCodeBeforeModules": false,
