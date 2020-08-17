@@ -1,7 +1,6 @@
 'use strict';
 
 const gulp = tars.packages.gulp;
-const runSequence = tars.packages.runSequence.use(gulp);
 const gutil = tars.packages.gutil;
 const chokidar = tars.packages.chokidar;
 const watcherLog = tars.helpers.watcherLog;
@@ -22,6 +21,6 @@ module.exports = function () {
     ).on('all', function (event, watchedPath) {
         watcherLog(event, watchedPath);
         // You could start as many tasks as you need
-        runSequence(/* Task name (String) to start */);
+        gulp.start(/* Task name (String) to start */);
     });
 };

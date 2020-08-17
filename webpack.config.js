@@ -119,6 +119,7 @@ function prepareEntryPoints(entryConfig) {
 
   return entryConfig;
 }
+
 module.exports = {
   mode: webpackMode,
   // We have to add some pathes to entry point in case of using HMR
@@ -144,7 +145,7 @@ module.exports = {
     rules,
   },
 
-  plugins,
+  plugins: plugins,
 
   resolveLoader: {
     modules: modulesDirectories,

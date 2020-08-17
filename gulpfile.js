@@ -9,41 +9,28 @@ const gulp = tars.packages.gulp;
 // Require system and user's tasks
 // You can add your own tasks.
 // All your tasks have to be in tars/user-tasks folder
-tars.helpers.tarsFsHelper.getTasks().forEach((file) => require(file)());
+tars.helpers.tarsFsHelper
+    .getTasks()
+    .forEach(file => require(file)());
 
 // Register links to main tasks without namespace
 // Build-dev task. Build dev-version (without watchers)
-gulp.task(
-    'build-dev',
-    gulp.series('main:build-dev', (done) => done()),
-);
+gulp.task('build-dev', () => gulp.start('main:build-dev'));
 
 // Dev task. Build dev-version with watchers and livereload
-gulp.task(
-    'dev',
-    gulp.series('main:dev', (done) => done()),
-);
+gulp.task('dev', () => gulp.start('main:dev'));
 
 // Build task. Build release version
-gulp.task(
-    'build',
-    gulp.series('main:build', (done) => done()),
-);
+gulp.task('build', () => gulp.start('main:build'));
 
 // Init task. Just start init task
-gulp.task(
-    'init',
-    gulp.series('service:init', (done) => done()),
-);
+gulp.task('init', () => gulp.start('service:init'));
+
+// Re-init task. Just start re-init task
+gulp.task('re-init', () => gulp.start('service:re-init'));
 
 // Update-deps task. Just start update-deps task
-gulp.task(
-    'update-deps',
-    gulp.series('service:update-deps', (done) => done()),
-);
+gulp.task('update-deps', () => gulp.start('service:update-deps'));
 
 // Default task. Just start build task
-gulp.task(
-    'default',
-    gulp.series('build', (done) => done()),
-);
+gulp.task('default', () => gulp.start('build'));
