@@ -1,4 +1,7 @@
-> 1%
-last 2 versions
-Firefox ESR
-android 4
+Chrome >= 74
+Firefox >= 67
+Safari >= 11
+Opera >= 60
+Edge >= 79
+ChromeAndroid >= 75
+iOS >= 11
