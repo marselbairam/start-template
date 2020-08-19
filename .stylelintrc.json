@@ -18,7 +18,19 @@
       },
       {
         "type": "rule",
+        "selector": "^&::before"
+      },
+      {
+        "type": "rule",
+        "selector": "^&::after"
+      },
+      {
+        "type": "rule",
         "selector": "^&:\\w"
+      },
+      {
+        "type": "rule",
+        "selector": "^& \\+ &"
       },
       {
         "type": "rule",
