@@ -22,7 +22,14 @@
     "husky": "^0.14.3",
     "lint-staged": "^10.2.11",
     "prettier": "^2.0.5",
-    "style-loader": "^1.1.4"
+    "style-loader": "^1.1.4",
+    "stylelint": "^13.6.1",
+    "stylelint-config-airbnb": "0.0.0",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-order": "^4.1.0",
+    "stylelint-prettier": "^1.1.2",
+    "stylelint-scss": "^3.18.0"
   },
   "scripts": {
     "precommit": "lint-staged",
@@ -36,11 +43,16 @@
     }
   },
   "lint-staged": {
+    "*.+(scss|css)": [
+      "prettier --write",
+      "stylelint --fix --config ./.stylelintrc",
+      "git add"
+    ],
     "*.+(js)": [
       "eslint --fix",
       "git add"
     ],
-    "*.+(json|css|md)": [
+    "*.+(json|md)": [
       "prettier --write",
       "git add"
     ]
