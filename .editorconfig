@@ -6,13 +6,6 @@ indent_size = 2
 charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = true
-
-[*.md]
-trim_trailing_whitespace = false
-
-[node_modules/**.js]
-codepaint = false
-
-[package.json]
-indent_style = space
-indent_size = 2
+end_of_line = lf
+# editorconfig-tools is unable to ignore longs strings or urls
+max_line_length = off
