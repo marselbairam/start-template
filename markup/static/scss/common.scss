@@ -11,49 +11,52 @@ html {
 }
 
 body {
-  min-height: 100%;
   overflow-x: hidden;
-  font-weight: 400;
+  min-height: 100%;
   font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  font-weight: 400;
   text-rendering: optimizeSpeed;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  @include desktop-large-min {
+    color: red;
+  }
+  @include desktop-large-max {
+    color: green;
+  }
+}
+
+.kirill {
+  &_red {
+    color: red;
+  }
+  &:before {
+    color: blue;
+  }
+  &:hover {
+    color: red;
+  }
+  &:active {
+    color: blue;
+  }
+  &:nth-child(2) {
+    color: red;
+  }
+  &__blue {
+    color: blue;
+  }
+  &.red {
+    color: red;
+  }
+  & + .red {
+    color: red;
+  }
 }
 
 /**
  * Content elements
  */
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-}
-
-p {
-}
-
-blockquote {
-  & p {
-  }
-
-  & cite {
-  }
-}
-
-figure {
-  & figcaption {
-  }
-}
-
-img {
-}
-
-ul,
-ol {
-}
 
 .m-p-b-reset {
   & > *:first-child {
@@ -98,18 +101,6 @@ input {
     width: 0;
     height: 0;
   }
-
-  &::-webkit-input-placeholder {
-  }
-
-  &::-moz-placeholder {
-  }
-
-  &:-ms-input-placeholder {
-  }
-
-  &:-moz-placeholder {
-  }
 }
 
 input[type='number'] {
@@ -127,12 +118,6 @@ input[type='date'] {
 /**
  * Grid
  */
-
-.main-wrapper {
-}
-
-.common-container {
-}
 
 /**
  * Main styles
