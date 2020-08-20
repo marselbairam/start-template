@@ -18,13 +18,6 @@ body {
   text-rendering: optimizeSpeed;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  @include desktop-large-min {
-    color: red;
-  }
-  @include desktop-large-max {
-    color: green;
-  }
 }
 
 /**
