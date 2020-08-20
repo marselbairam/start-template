@@ -1,32 +1,47 @@
 {
-  "extends": [
-    "stylelint-config-airbnb",
-    "stylelint-config-rational-order",
-    "stylelint-prettier/recommended"
-  ],
+  "extends": ["stylelint-config-airbnb", "stylelint-prettier/recommended"],
   "plugins": ["stylelint-order", "stylelint-scss"],
+  "ignoreFiles": [
+    "./markup/static/scss/entry/*.scss",
+    "./markup/static/scss/etc/*.scss",
+    "./markup/static/scss/sprite-generator-templates/*.scss",
+    "./markup/static/scss/sprites-scss/*.scss",
+    "./markup/static/scss/normalize.scss"
+  ],
   "rules": {
     "order/order": [
       "declarations",
+      {
+        "type": "at-rule",
+        "name": "supports"
+      },
       {
         "type": "at-rule",
         "name": "media"
       },
       {
         "type": "rule",
-        "selector": "^&::(before|after)"
+        "selector": "^&:(before|after)"
       },
       {
         "type": "rule",
-        "selector": "^&::before"
+        "selector": "^&:before"
       },
       {
         "type": "rule",
-        "selector": "^&::after"
+        "selector": "^&:after"
       },
       {
         "type": "rule",
-        "selector": "^&:\\w"
+        "selector": "^&:(?!hover|focus|active|disabled)"
+      },
+      {
+        "type": "rule",
+        "selector": "^&:(hover|focus|active|disabled)"
+      },
+      {
+        "type": "rule",
+        "selector": "^(&_([a-z0-9]+-?)+)?"
       },
       {
         "type": "rule",
@@ -34,12 +49,13 @@
       },
       {
         "type": "rule",
-        "selector": "^&_"
+        "selector": "^&\\.&"
       },
       {
         "type": "rule",
-        "selector": "^."
-      }
+        "selector": "^(&__([a-z0-9]+-?)+)?"
+      },
+      "rules"
     ]
   }
 }
