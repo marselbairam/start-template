@@ -27,33 +27,6 @@ body {
   }
 }
 
-.kirill {
-  &_red {
-    color: red;
-  }
-  &:before {
-    color: blue;
-  }
-  &:hover {
-    color: red;
-  }
-  &:active {
-    color: blue;
-  }
-  &:nth-child(2) {
-    color: red;
-  }
-  &__blue {
-    color: blue;
-  }
-  &.red {
-    color: red;
-  }
-  & + .red {
-    color: red;
-  }
-}
-
 /**
  * Content elements
  */
