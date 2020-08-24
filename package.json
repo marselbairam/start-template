@@ -35,25 +35,5 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC",
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.+(scss|css)": [
-      "prettier --write",
-      "stylelint --fix --config ./.stylelintrc.js",
-      "git add"
-    ],
-    "*.+(js)": [
-      "eslint --fix",
-      "git add"
-    ],
-    "*.+(json|md)": [
-      "prettier --write",
-      "git add"
-    ]
-  }
+  "license": "ISC"
 }
